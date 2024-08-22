@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %}To Watch List{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="to-watch-container">
+            <h2>To Watch List</h2>
+            <il>
+                {% for item in items %}
+                    <li class="to-watch-item">
+                        <a href="{{ item.link }}" target="_blank">{{ item.title }}</a>
+                        <form action="{{ url_for('to_watch_list.delete', item_id=item.id) }}" method="POST">
+                            {% include "delete_btn.html" %}
+                        </form>
+                    </li>
+                {% endfor %}
+            </il>
+        
+            <form method="POST" class="form">
+                <input class = "inputFrom" type="text" name="title" placeholder="Enter the title">
+                <input class = "inputFrom" type="text" name="link" placeholder="Enter the link">
+                <button class="form-btn" type="submit">
+                    <span class="circle1"></span>
+                    <span class="circle2"></span>
+                    <span class="circle3"></span>
+                    <span class="circle4"></span>
+                    <span class="circle5"></span>
+                    <span class="text">Submit</span>
+                </button>
+            </form>
+        </div>
+        
+        <div class="to-do-container">
+            <h2>To Do List</h2>
+            <div id="checklist">
+                {% for i in items %}
+                    <input value="{{ loop.index }}" id="0{{ loop.index }}" name="r" type="checkbox">
+                    <label for="0{{ loop.index }}">{{ i.title }}</label>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+    
+    
+{% endblock %}
+
+{% block script %}
+<script src="{{ url_for('static', filename='js/index.js') }}"></script>
+{% endblock %}
