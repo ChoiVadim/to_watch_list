@@ -1,13 +1,15 @@
 body {
   background-color: #212121;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
   margin: 0;
   width: 100vw;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 .container {
-  height: 100%;
-  width: 100%;
   display: inline-flex;
 }
 
@@ -21,6 +23,96 @@ body {
   align-items: center;
   justify-content: center;
   margin-top: 20px;
+
+  .form {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+
+    .inputFrom {
+      border: 1.5px solid #ecedec;
+      border-radius: 10px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      transition: 0.2s ease-in-out;
+  
+    }
+    input {
+      border: none;
+      padding-left: 15px;
+      margin-bottom: 10px;
+    }
+  }
+}
+
+.notes-container {
+  background: white;
+  height: 100%;
+  max-width: 300px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(65, 72, 86, 0.05);
+  padding: 20px 55px;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+
+  .notes-item {
+    font-size: large;
+    display: flex;                /* Use flexbox to align items in a row */
+    align-items: flex-start;       /* Align items vertically at the start to allow for multiline text */
+    justify-content: space-between; /* Adjust spacing between the content */
+    margin-bottom: 10px; 
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.164);
+    border-radius: 10px;
+    padding: 10px;
+    resize: vertical;
+    flex-wrap: wrap;               /* Allow wrapping of the content inside */
+    width: 100%;                   /* Ensure it takes full width of the container */
+    max-width: 100%;               /* Prevent content from overflowing */
+}
+
+
+  .notes-item a {
+    margin-right: 10px;        
+    text-decoration: none;   
+    color: black;       
+  }
+
+  .form {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+
+    .inputFrom {
+      border: 1.5px solid #ecedec;
+      border-radius: 10px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      transition: 0.2s ease-in-out;
+  
+    }
+    input {
+      border: none;
+      padding-left: 15px;
+      margin-bottom: 10px;
+    }
+    .notes-input {
+      width: 100%;
+      height: 150px; /* Adjust this height based on how much text you expect */
+      font-size: large;
+      padding: 10px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.164);
+      resize: vertical;  /* Allows the user to resize the textarea vertically */
+      overflow-wrap: break-word; /* Ensures text wraps properly within the textarea */
+      border: 1px solid #ccc;
+  }
+  
+  }
 }
 
 .to-watch-container {
@@ -62,7 +154,7 @@ body {
     .inputFrom {
       border: 1.5px solid #ecedec;
       border-radius: 10px;
-      height: 50px;
+      height: 40px;
       display: flex;
       align-items: center;
       transition: 0.2s ease-in-out;

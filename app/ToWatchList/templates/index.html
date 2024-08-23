@@ -10,17 +10,17 @@
         <div class="to-watch-container">
             <h2>To Watch List</h2>
             <il>
-                {% for item in items %}
+                {% for item in to_watch_items %}
                     <li class="to-watch-item">
                         <a href="{{ item.link }}" target="_blank">{{ item.title }}</a>
-                        <form action="{{ url_for('to_watch_list.delete', item_id=item.id) }}" method="POST">
+                        <form action="{{ url_for('to_watch_list.delete_to_watch_item', item_id=item.id) }}" method="POST">
                             {% include "delete_btn.html" %}
                         </form>
                     </li>
                 {% endfor %}
             </il>
         
-            <form method="POST" class="form">
+            <form method="POST" class="form" action="{{ url_for('to_watch_list.create_to_watch_item') }}">
                 <input class = "inputFrom" type="text" name="title" placeholder="Enter the title">
                 <input class = "inputFrom" type="text" name="link" placeholder="Enter the link">
                 <button class="form-btn" type="submit">
@@ -37,11 +37,50 @@
         <div class="to-do-container">
             <h2>To Do List</h2>
             <div id="checklist">
-                {% for i in items %}
+                {% for i in to_do_items %}
                     <input value="{{ loop.index }}" id="0{{ loop.index }}" name="r" type="checkbox">
-                    <label for="0{{ loop.index }}">{{ i.title }}</label>
+                    <label for="0{{ loop.index }}">{{ i.content }}</label>
                 {% endfor %}
             </div>
+
+            <form method="POST" class="form" action="{{ url_for('to_watch_list.create_to_do_item') }}">
+                <input class = "inputFrom" type="text" name="content" placeholder="Enter the content">
+                <button class="form-btn" type="submit">
+                    <span class="circle1"></span>
+                    <span class="circle2"></span>
+                    <span class="circle3"></span>
+                    <span class="circle4"></span>
+                    <span class="circle5"></span>
+                    <span class="text">Submit</span>
+                </button>
+            </form>
+
+        </div>
+
+        <div class="notes-container">
+            <h2>Notes</h2>
+            <il>
+                {% for item in notes_items %}
+                    <li class="notes-item">
+                        <textarea>{{ item.content }}</textarea>
+                        <form action="{{ url_for('to_watch_list.delete_notes_item', item_id=item.id) }}" method="POST">
+                            {% include "delete_btn.html" %}
+                        </form>
+                    </li>
+                {% endfor %}
+            </il>
+
+            <form method="POST" class="form" action="{{ url_for('to_watch_list.create_notes_item') }}">
+                <textarea class="notes-input" placeholder="Enter your notes here..." name="content"></textarea>
+                <button class="form-btn" type="submit">
+                    <span class="circle1"></span>
+                    <span class="circle2"></span>
+                    <span class="circle3"></span>
+                    <span class="circle4"></span>
+                    <span class="circle5"></span>
+                    <span class="text">Submit</span>
+                </button>
+            </form>
         </div>
 
     </div>
